@@ -6,10 +6,10 @@
         </ProjectAssembly>
         <ProjectAssembly z:Id="i3">
             <DoEmbed>true</DoEmbed>
-            <FullName>CppFixItUi, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</FullName>
+            <FullName>CppFixItUi, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</FullName>
         </ProjectAssembly>
         <ProjectAssembly z:Id="i4">
-            <FullName>CppFixItAddIn2012, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</FullName>
+            <FullName>CppFixItAddIn2012, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null</FullName>
         </ProjectAssembly>
     </Assemblies>
     <FormatVersion>3.00</FormatVersion>
