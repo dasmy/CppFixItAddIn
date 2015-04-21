@@ -567,7 +567,7 @@ namespace CppFixItAddIn
             stringBuilder.Append(GetArgumentMicrosoftCompilerSpecific());
 
             stringBuilder.Append(" -pedantic ");
-            stringBuilder.Append(" -ferror-limit=9999 ");
+            stringBuilder.Append(" -ferror-limit=0 ");
             
             stringBuilder.Append("\"" + vcFile.FullPath + "\"");
             return stringBuilder.ToString();
@@ -580,6 +580,7 @@ namespace CppFixItAddIn
             stringBuilder.Append(" -fms-extensions ");
             stringBuilder.Append(" -fms-compatibility ");
             stringBuilder.Append(" -fdiagnostics-format=msvc ");
+            stringBuilder.Append(" -D_M_AMD64 ");
             return stringBuilder.ToString();
         }
 
@@ -593,6 +594,7 @@ namespace CppFixItAddIn
                 //directory
                 Directory.SetCurrentDirectory(directory);
 
+                OutputPaneWriteln("ProcessStart \n" + name + " " + argument + "\n in " + directory);
                 ts.TraceInformation("ProcessStart \n" + name + " " + argument + "\n in " + directory);
                 System.Diagnostics.Process process = new System.Diagnostics.Process();
                 process.StartInfo.UseShellExecute = false;
@@ -657,6 +659,11 @@ namespace CppFixItAddIn
             if (match.Groups.Count == 6)
             {
                 file = match.Groups[1].Value;
+
+                // we simply ignore errors and warnings from system includes
+                if (DTE2Utils.IsSystemInclude(file))
+                    return;
+                
                 lineNumber = match.Groups[2].Value;
                 columnNumber = match.Groups[3].Value;
                 type = match.Groups[4].Value;

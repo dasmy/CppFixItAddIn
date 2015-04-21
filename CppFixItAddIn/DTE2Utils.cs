@@ -429,7 +429,7 @@ namespace CppFixItAddIn
             return defines.ToString();
         }
 
-        static private bool IsSystemInclude(string include)
+        static public bool IsSystemInclude(string include)
         {
             if (include.Contains("Microsoft Visual Studio")
                 || include.Contains("Microsoft SDKs"))
