@@ -565,6 +565,9 @@ namespace CppFixItAddIn
             stringBuilder.Append(DTE2Utils.GetIncludesForFile(vcFileConfiguration));
             stringBuilder.Append(DTE2Utils.GetDefinesForFile(vcFileConfiguration));
             stringBuilder.Append(GetArgumentMicrosoftCompilerSpecific());
+
+            stringBuilder.Append(" -pedantic ");
+            stringBuilder.Append(" -ferror-limit=9999 ");
             
             stringBuilder.Append("\"" + vcFile.FullPath + "\"");
             return stringBuilder.ToString();
